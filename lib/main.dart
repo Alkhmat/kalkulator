@@ -95,7 +95,7 @@ class _KkalViewState extends State<KkalView> {
                       crossAxisCount: 2),
                   itemBuilder: (context, index) {
                     VoidCallback onPressedAddkkal;
-                    VoidCallback onPressedRemovekkal;
+                    // VoidCallback onPressedRemovekkal;
                     switch (index) {
                       case 0:
                         onPressedAddkkal = () {
