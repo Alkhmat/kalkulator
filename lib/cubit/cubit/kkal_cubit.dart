@@ -1,362 +1,45 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kalkulator/cubit/cubit/kkal_state.dart';
+import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
 
+// Класс состояния
+class KkalState extends Equatable {
+  final int value;
+
+  const KkalState({required this.value});
+
+  factory KkalState.initial() => const KkalState(value: 0);
+
+  KkalState copyWith({int? value}) {
+    return KkalState(
+      value: value ?? this.value,
+    );
+  }
+
+  @override
+  List<Object?> get props => [value];
+}
+
+// Класс кубита
 class KkalCubit extends Cubit<KkalState> {
-  KkalCubit() : super(KkalState(value: 0));
-  void kartoshka() {
-    emit(KkalState(value: state.value + 200));
-  }
+  KkalCubit() : super(KkalState.initial());
 
-  void pasta() {
-    emit(KkalState(value: state.value + 20));
-  }
+  void kartoshka() => emit(state.copyWith(value: state.value + 100));
+  void plov() => emit(state.copyWith(value: state.value + 200));
+  void sup() => emit(state.copyWith(value: state.value + 150));
+  void cola() => emit(state.copyWith(value: state.value + 150));
+  void samsa() => emit(state.copyWith(value: state.value + 250));
+  void manty() => emit(state.copyWith(value: state.value + 300));
+  void burger() => emit(state.copyWith(value: state.value + 400));
+  void enerdetik() => emit(state.copyWith(value: state.value + 250));
+  void pepsi() => emit(state.copyWith(value: state.value + 140));
+  void shaurma() => emit(state.copyWith(value: state.value + 300));
+  void ric() => emit(state.copyWith(value: state.value + 200));
+  void gracka() => emit(state.copyWith(value: state.value + 350));
+  void makaron() => emit(state.copyWith(value: state.value + 200));
+  void bread() => emit(state.copyWith(value: state.value + 100));
+  void cake() => emit(state.copyWith(value: state.value + 400));
+  void lag() => emit(state.copyWith(value: state.value + 500));
 
-  void pahlava() {
-    emit(KkalState(value: state.value + 10));
-  }
-
-  void lagman() {
-    emit(KkalState(value: state.value + 20));
-  }
-
-  void plov() {
-    emit(KkalState(value: state.value + 150));
-  }
-
-  void sup() {
-    emit(KkalState(value: state.value + 50));
-  }
-
-  void ramen() {
-    emit(KkalState(value: state.value + 20));
-  }
-
-  void cola() {
-    emit(KkalState(value: state.value + 42));
-  }
-
-  void fanta() {
-    emit(KkalState(value: state.value + 42));
-  }
-
-  void enerdetik() {
-    emit(KkalState(value: state.value + 120));
-  }
-
-  void pepsi() {
-    emit(KkalState(value: state.value + 42));
-  }
-
-  void boorsok() {
-    emit(KkalState(value: state.value + 20));
-  }
-
-  void bread() {
-    emit(KkalState(value: state.value + 20));
-  }
-
-  void bulochka() {
-    emit(KkalState(value: state.value + 20));
-  }
-
-  void burger() {
-    emit(KkalState(value: state.value + 450));
-  }
-
-  void hottog() {
-    emit(KkalState(value: state.value + 20));
-  }
-
-  void kfc() {
-    emit(KkalState(value: state.value + 20));
-  }
-
-  void pizza() {
-    emit(KkalState(value: state.value + 20));
-  }
-
-  void shaurma() {
-    emit(KkalState(value: state.value + 700));
-  }
-
-  void sushi() {
-    emit(KkalState(value: state.value + 20));
-  }
-
-  void carrot() {
-    emit(KkalState(value: state.value + 20));
-  }
-
-  void cabbich() {
-    emit(KkalState(value: state.value + 20));
-  }
-
-  void redis() {
-    emit(KkalState(value: state.value + 20));
-  }
-
-  void tomato() {
-    emit(KkalState(value: state.value + 20));
-  }
-
-  void pamkin() {
-    emit(KkalState(value: state.value + 20));
-  }
-
-  void cucumber() {
-    emit(KkalState(value: state.value + 20));
-  }
-
-  void svekla() {
-    emit(KkalState(value: state.value + 20));
-  }
-
-  void samsa() {
-    emit(KkalState(value: state.value + 250));
-  }
-
-  void manty() {
-    emit(KkalState(value: state.value + 150));
-  }
-
-  void ric() {
-    emit(KkalState(value: state.value + 120));
-  }
-
-  void gracka() {
-    emit(KkalState(value: state.value + 120));
-  }
-
-  void makaron() {
-    emit(KkalState(value: state.value + 120));
-  }
-
-  void cake() {
-    emit(KkalState(value: state.value + 500));
-  }
-
-  void lag() {
-    emit(KkalState(value: state.value + 200));
-  }
-
-  void kef() {
-    emit(KkalState(value: state.value + 60));
-  }
-
-// от сюда начинается remove kkal  по принципу если умножить то и надо сократить
-  void kartoshkare() {
-    int newValue = state.value - 10;
-    if (newValue < 0) {
-      newValue = 0;
-    }
-    emit(KkalState(value: newValue));
-  }
-
-  void ramenre() {
-    int newValue = state.value - 20;
-    if (newValue < 0) {
-      newValue = 0;
-    }
-    emit(KkalState(value: newValue));
-  }
-
-  void pastare() {
-    int newValue = state.value - 10;
-    if (newValue < 0) {
-      newValue = 0;
-    }
-    emit(KkalState(value: newValue));
-  }
-
-  void pahlavare() {
-    int newValue = state.value - 20;
-    if (newValue < 0) {
-      newValue = 0;
-    }
-    emit(KkalState(value: newValue));
-  }
-
-  void lagmanre() {
-    int newValue = state.value - 10;
-    if (newValue < 0) {
-      newValue = 0;
-    }
-    emit(KkalState(value: newValue));
-  }
-
-  void sunre() {
-    int newValue = state.value - 20;
-    if (newValue < 0) {
-      newValue = 0;
-    }
-    emit(KkalState(value: newValue));
-  }
-
-  void plovre() {
-    int newValue = state.value - 20;
-    if (newValue < 0) {
-      newValue = 0;
-    }
-    emit(KkalState(value: newValue));
-  }
-
-  void colare() {
-    int newValue = state.value - 20;
-    if (newValue < 0) {
-      newValue = 0;
-    }
-    emit(KkalState(value: newValue));
-  }
-
-  void pepsire() {
-    int newValue = state.value - 20;
-    if (newValue < 0) {
-      newValue = 0;
-    }
-    emit(KkalState(value: newValue));
-  }
-
-  void fantare() {
-    int newValue = state.value - 20;
-    if (newValue < 0) {
-      newValue = 0;
-    }
-    emit(KkalState(value: newValue));
-  }
-
-  void enerdetikre() {
-    int newValue = state.value - 20;
-    if (newValue < 0) {
-      newValue = 0;
-    }
-    emit(KkalState(value: newValue));
-  }
-
-  void breadre() {
-    int newValue = state.value - 20;
-    if (newValue < 0) {
-      newValue = 0;
-    }
-    emit(KkalState(value: newValue));
-  }
-
-  void bulochkare() {
-    int newValue = state.value - 20;
-    if (newValue < 0) {
-      newValue = 0;
-    }
-    emit(KkalState(value: newValue));
-  }
-
-  void boorsokre() {
-    int newValue = state.value - 20;
-    if (newValue < 0) {
-      newValue = 0;
-    }
-    emit(KkalState(value: newValue));
-  }
-
-  void burgerre() {
-    int newValue = state.value - 20;
-    if (newValue < 0) {
-      newValue = 0;
-    }
-    emit(KkalState(value: newValue));
-  }
-
-  void hottogre() {
-    int newValue = state.value - 20;
-    if (newValue < 0) {
-      newValue = 0;
-    }
-    emit(KkalState(value: newValue));
-  }
-
-  void kfcre() {
-    int newValue = state.value - 20;
-    if (newValue < 0) {
-      newValue = 0;
-    }
-    emit(KkalState(value: newValue));
-  }
-
-  void pizzare() {
-    int newValue = state.value - 20;
-    if (newValue < 0) {
-      newValue = 0;
-    }
-    emit(KkalState(value: newValue));
-  }
-
-  void shaurmare() {
-    int newValue = state.value - 20;
-    if (newValue < 0) {
-      newValue = 0;
-    }
-    emit(KkalState(value: newValue));
-  }
-
-  void sushire() {
-    int newValue = state.value - 20;
-    if (newValue < 0) {
-      newValue = 0;
-    }
-    emit(KkalState(value: newValue));
-  }
-
-  void carrotre() {
-    int newValue = state.value - 20;
-    if (newValue < 0) {
-      newValue = 0;
-    }
-    emit(KkalState(value: newValue));
-  }
-
-  void cabbichre() {
-    int newValue = state.value - 20;
-    if (newValue < 0) {
-      newValue = 0;
-    }
-    emit(KkalState(value: newValue));
-  }
-
-  void redisre() {
-    int newValue = state.value - 20;
-    if (newValue < 0) {
-      newValue = 0;
-    }
-    emit(KkalState(value: newValue));
-  }
-
-  void tomatore() {
-    int newValue = state.value - 20;
-    if (newValue < 0) {
-      newValue = 0;
-    }
-    emit(KkalState(value: newValue));
-  }
-
-  void pamkinre() {
-    int newValue = state.value - 20;
-    if (newValue < 0) {
-      newValue = 0;
-    }
-    emit(KkalState(value: newValue));
-  }
-
-  void cucumberre() {
-    int newValue = state.value - 20;
-    if (newValue < 0) {
-      newValue = 0;
-    }
-    emit(KkalState(value: newValue));
-  }
-
-  void sveklare() {
-    int newValue = state.value - 20;
-    if (newValue < 0) {
-      newValue = 0;
-    }
-    emit(KkalState(value: newValue));
-  }
+  // Метод для сброса состояния
+  void reset() => emit(KkalState.initial());
 }

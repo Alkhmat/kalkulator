@@ -209,6 +209,13 @@ class _KkalViewState extends State<KkalView> {
             )
           ],
         ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            context.read<KkalCubit>().reset();
+          },
+          backgroundColor: Colors.blue,
+          child: const Icon(Icons.refresh),
+        ),
       ),
     );
   }
