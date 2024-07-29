@@ -1,5 +1,5 @@
-class KkalState {
-  final int value;
+// class KkalState {
+//   final int value;
 
-  KkalState({required this.value});
-}
+//   KkalState({required this.value});
+// }

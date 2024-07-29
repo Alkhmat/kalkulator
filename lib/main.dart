@@ -89,7 +89,7 @@ class _KkalViewState extends State<KkalView> {
               padding: const EdgeInsets.all(8.0),
               child: SizedBox(
                 width: w,
-                height: h * 0.77,
+                height: h * 0.835,
                 child: GridView.builder(
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2),
